@@ -13,3 +13,5 @@ This is a simple calendar application that allows users to save events at each h
 
 
 ## Screenshots 
+
+### Made with &hearts; by Zue. 
