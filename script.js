@@ -4,7 +4,7 @@ var saveBtn = $(".saveBtn")
 // FUNCTIONS
 /* WHEN I open the planner
 THEN the current day is displayed at the top of the calendar */ 
-$("#currentDay").text(moment().format('dddd MMMM do YYYY'));
+$("#currentDay").text(moment().format('dddd MMMM Do YYYY'));
 
 /* WHEN I view the time blocks for that day
 THEN each time block is color-coded to indicate whether it is in the past, present, or future */
