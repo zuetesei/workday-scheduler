@@ -14,7 +14,7 @@ function timeBlockColor() {
     console.log(hour)
 
     $(".time-block").each(function() {
-        var currentHour = parseInt($(this).attr("value"));
+        var currentHour = parseInt($(this).attr("id"));
         console.log(this)
         console.log(currentHour)
 
@@ -26,6 +26,10 @@ function timeBlockColor() {
         $(this).addClass("past")
     }
 })
+}
+
+function dailyPlanner() {
+
 }
 
 timeBlockColor()

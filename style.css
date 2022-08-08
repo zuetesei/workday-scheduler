@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&family=Righteous&display=swap');
+
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 16px;
     line-height: 1;
   }
@@ -27,16 +29,16 @@ body {
     white-space: pre-wrap;
   }
   
-  /* .time-block{
+  .time-block{
     text-align: center;
     border-radius: 15px;
   }
   
   .row {
-    white-space: pre-wrap;
+    /* white-space: pre-wrap; */
     height: 80px;
     border-top: 1px solid white;;
-  } */
+  }
 
   .btn {
     height: 100%;
@@ -47,7 +49,8 @@ body {
   .hour {
     background-color: #ffffff;
     color: #000000;
-    border-top: 1px dashed #000000;
+    font-size: 18px;
+    /* border-top: 1px dashed #000000; */
   }
   
   .past {
