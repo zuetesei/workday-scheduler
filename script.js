@@ -11,11 +11,21 @@ $("#currentDay").text(moment().format('dddd MMMM do YYYY'));
 THEN each time block is color-coded to indicate whether it is in the past, present, or future */
 function timeBlockColor() {
     var hour = moment().hours();
+    console.log(hour)
 
     $(".time-block").each(function() {
         var currentHour = parseInt($(this).attr("value"));
         console.log(this)
-    })
+        console.log(currentHour)
+
+    if (currentHour > hour) {
+        $(this).addClass("future")
+    } else if (currentHour === hour) {
+        $(this).addClass("present")       
+    } else {
+        $(this).addClass("past")
+    }
+})
 }
 
 timeBlockColor()
