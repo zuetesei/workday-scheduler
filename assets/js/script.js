@@ -1,42 +1,91 @@
+// Display today's date
+$("#currentDay").text(moment().format('dddd MMMM Do YYYY'));
+
 $(document).ready(function() {
-    var currentMoment = moment().format("MMMM Do YYYY");
-    var currentDate = document.getElementById("currentDay");
-    currentDate.innerHTML = currentMoment;
-    var hour = moment().format("HH");
+    // save btn listening event 
+    $(".saveBtn").on("click", function() {
+        // event.preventDefault();
+        var time = $(this).parent().attr("id");
+        var plan = $(this).siblings(".plan-content").val();
+        localStorage.setItem(time, plan);
+    })
 
-    // time blocks 
-    $(".time-block").each(function() {
-        var currentHour = parseInt($(this).attr("id"));
-        console.log(this)
-        console.log(currentHour)
+    function timeTracker() {
+        var thisMoment = moment().hour();
+        // loop over time blocks
+        $(".time-block").each(function () {
+            var hourBlock = parseInt($(this).attr("id").split("hour")[1]);
 
-    if (currentHour > hour) {
-        $(this).addClass("future")
-    } else if (currentHour === hour) {
-        $(this).addClass("present")       
-    } else {
-        $(this).addClass("past")
+            // add and remove classes according to time 
+            if (hourBlock < thisMoment) {
+                $(this).removeClass("future");
+                $(this).removeClass("present");
+                $(this).addClass("past");
+            } else if (hourBlock === thisMoment) {
+                $(this).removeClass("past");
+                $(this).removeClass("future");
+                $(this).addClass("present");
+            } else {
+                $(this).removeClass("past");
+                $(this).removeClass("present");
+                $(this).addClass("future");
+            }
+
+        })
+         
     }
-});
-
-$("saveBtn").click(function(event) {
-    event.preventDefault();
-    var time = $(this).siblings(".hour").text();
-    var plan = $(this).siblings(".plan").val();
-    localStorage.setItem(time, plan);
-})
     // THEN the text for that event is saved in local storage
     // jQuery retrieve items from local storage 
-    $("#hour-09 .plan").val(localStorage.getItem("hour-9"));
-    $("#hour-10 .plan").val(localStorage.getItem("hour-10"));
-    $("#hour-11 .plan").val(localStorage.getItem("hour-11"));
-    $("#hour-12 .plan").val(localStorage.getItem("hour-12"));
-    $("#hour-13 .plan").val(localStorage.getItem("hour-13"));
-    $("#hour-14 .plan").val(localStorage.getItem("hour-14"));
-    $("#hour-15 .plan").val(localStorage.getItem("hour-15"));
-    $("#hour-16 .plan").val(localStorage.getItem("hour-16"));
-    $("#hour-17 .plan").val(localStorage.getItem("hour-17"));
+    $("#hour9 .plan").val(localStorage.getItem("hour9"));
+    $("#hour10 .plan").val(localStorage.getItem("hour10"));
+    $("#hour11 .plan").val(localStorage.getItem("hour11"));
+    $("#hour12 .plan").val(localStorage.getItem("hour12"));
+    $("#hour13 .plan").val(localStorage.getItem("hour13"));
+    $("#hour14 .plan").val(localStorage.getItem("hour14"));
+    $("#hour15 .plan").val(localStorage.getItem("hour15"));
+    $("#hour16 .plan").val(localStorage.getItem("hour16"));
+    $("#hour17 .plan").val(localStorage.getItem("hour17"));
+
+    timeTracker();
 })
+
+// function timeBlockColor() {
+//     var hour = moment().hours();
+//     console.log(hour)
+
+//     $(".time-block").each(function() {
+//         var currentHour = $(this).attr("id").split("-")[1];
+//         console.log(this)
+//         console.log(currentHour)
+
+//     if (currentHour > hour) {
+//         $(this).addClass("future")
+//     } else if (currentHour == hour) {
+//         $(this).addClass("present")       
+//     } else {
+//         $(this).addClass("past")
+//     }
+// })
+// }
+
+// timeBlockColor()
+
+
+
+//     // time blocks 
+//     $(".time-block").each(function() {
+//         var timeBlock = parseInt($(this).attr("id"));
+//         console.log(this)
+//         console.log(currentHour)
+
+//         if (currentHour > hour) {
+//             $(this).addClass("future")
+//         } else if (currentHour === hour) {
+//             $(this).addClass("present")       
+//         } else {
+//            $(this).addClass("past")
+//         }
+// });
 
 
 // // DEFINING VARIABLES 
@@ -49,24 +98,6 @@ $("saveBtn").click(function(event) {
 
 // /* WHEN I view the time blocks for that day
 // THEN each time block is color-coded to indicate whether it is in the past, present, or future */
-// function timeBlockColor() {
-//     var hour = moment().hours();
-//     console.log(hour)
-
-//     $(".time-block").each(function() {
-//         var currentHour = parseInt($(this).attr("id"));
-//         console.log(this)
-//         console.log(currentHour)
-
-//     if (currentHour > hour) {
-//         $(this).addClass("future")
-//     } else if (currentHour === hour) {
-//         $(this).addClass("present")       
-//     } else {
-//         $(this).addClass("past")
-//     }
-// })
-// }
 
 // // WHEN I click the save button for that time block
 
@@ -87,5 +118,4 @@ $("saveBtn").click(function(event) {
 
 // }
 
-// timeBlockColor()
 // dailyPlanner()
